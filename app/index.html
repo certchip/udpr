@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://imdns.org">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/script.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>UDP Message Receiver</title>
+</head>
+<body>
+    <div class="menu-box">
+        <div class="menu-line menu-line-1">
+            <input type="button" class="button" id="clear-button" value="Clear" />
+            <input type="checkbox" class="checkbox" id="linenumber-check" />
+            <label class="label" for="linenumber-check">Line Number</label>
+            <input type="checkbox" class="checkbox" id="blend-check" />
+            <label class="label" for="blend-check">Blend</label>
+            <input type="checkbox" class="checkbox" id="tag-check" checked />
+            <label class="label" for="tag-check">Tag</label>
+            
+            <div class="port-number-div">
+                <input type="number" id="port-number" value="7000" />
+            </div>
+
+            <input type="button" class="button" id="copy-button" value="Copy" />
+        </div>
+        <div class="menu-line menu-line-2">
+            <input type="button" class="button" id="select-all-button" value="Select All" />
+            <input type="text" class="input" id="hash-input" />
+            <input type="button" class="button" id="hash-button" value="Hash" />
+            <input type="button" class="button" id="hash64-button" value="Hash64" />
+            <input type="number" class="number-spin" id="font-size" min="1" max="50" step="1" value="12" />
+        </div>
+    </div>
+    <div id="main-terminal" class="terminal terminal-title-default left">
+        <div id="main-terminal-container">
+            <pre id="msg-box"></pre>
+        </div>
+    </div>
+</body>
+</html>

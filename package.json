@@ -1,0 +1,108 @@
+{
+  "name": "udpr",
+  "version": "1.0.2",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron .",
+    ".": "npx electronmon .",
+    "install": "node-gyp rebuild",
+    "package": "electron-builder",
+    "build:osx": "electron-builder --mac",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "electron-builder --linux --ia32",
+    "build:linux64": "electron-builder --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "electron-builder --win nsis:ia32",
+    "build:win64": "electron-builder --win nsis:x64",
+    "build:deb": "electron-builder --linux deb",
+    "build:rpm": "electron-builder --linux rpm",
+    "build:app": "electron-builder --linux AppImage",
+    "build:dpkg": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/linux/icon.png --prune=true --out=release-builds",
+    "generate-credentials": "node ./scripts/generate-credentials"
+  },
+  "author": "CSIEDA <admin@csieda.com> (https://www.csieda.com)",
+  "homepage": "https://www.csieda.com",
+  "files": [
+    "assets/**/*"
+  ],
+  "build": {
+    "productName": "UDP Message Receiver",
+    "appId": "com.csieda.udpmsgreceiver",
+    "asar": true,
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "icon": "assets/linux/icon.png",
+      "category": "Utility"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "default",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "assets/mac/icon.icns",
+      "identity": "Certchip (H5TQHJK3Y4)",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "type": "distribution"
+    },
+    "dmg": {
+      "title": "UDP Message Receiver"
+    },
+    "win": {
+      "certificateFile": "D:/OTPKEY/SIGN/Certchip.p12",
+      "certificatePassword": "certchip",
+      "icon": "assets/win/icon.ico",
+      "publisherName": "Certchip",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "UDP Message Receiver"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "dist",
+      "app": "."
+    }
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^24.3.0",
+    "electron-builder": "^24.3.0",
+    "electron-packager": "^17.1.1"
+  },
+  "gypfile": true,
+  "keywords": [
+    "CSIEDA"
+  ],
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "electron-settings": "^4.0.2",
+    "node-addon-api": "^6.1.0"
+  },
+  "repository": "gitsvr:/GIT/CSIEDA/udpr.git"
+}
